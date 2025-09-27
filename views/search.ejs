@@ -1,55 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Search Itinerary</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .spinner {
-      border: 4px solid #e5e7eb; /* gray-200 */
-      border-top: 4px solid #3b82f6; /* blue-500 */
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      animation: spin 1s linear infinite;
-    }
-  </style>
+  <title>Trip Planner</title>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-  <div class="bg-white shadow-lg rounded-xl p-8 w-96">
-    <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Plan Your Trip</h1>
-    <form id="tripForm" action="/itinerary" method="POST" class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium text-gray-600">City</label>
-        <input type="text" name="city" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-600">Start Date</label>
-        <input type="date" name="start" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400">
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-600">End Date</label>
-        <input type="date" name="end" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400">
-      </div>
-      <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg font-semibold">
-        Generate Itinerary
-      </button>
-      <div class="hidden text-center mt-4" id="loading">
-        <div class="spinner mx-auto"></div>
-        <p class="text-blue-600 mt-2">Generating itinerary, please wait...</p>
-      </div>
-    </form>
-  </div>
-
-  <script>
-    const form = document.getElementById("tripForm");
-    const loading = document.getElementById("loading");
-    form.addEventListener("submit", () => {
-      loading.classList.remove("hidden");
-    });
-  </script>
+<body>
+  <h1>Plan Your Trip</h1>
+  <form action="/itinerary" method="POST">
+    <label>City: <input type="text" name="city" value="Jaipur, India" required></label><br>
+    <label>Start Date: <input type="date" name="startDate" required></label><br>
+    <label>End Date: <input type="date" name="endDate" required></label><br>
+    <label>Total Budget: <input type="number" name="budget" value="5000" required></label><br>
+    <label>Currency: <input type="text" name="currency" value="INR" required></label><br>
+    <button type="submit">Generate Itinerary</button>
+  </form>
 </body>
 </html>
